@@ -33,24 +33,3 @@ services:
     depends_on:
       - postdb
   
-  storage:
-    image: mcr.microsoft.com/azure-storage/azurite
-    network_mode: service:director
-    restart: always
-    command: 'azurite --blobHost 0.0.0.0 --blobPort 10000 --queueHost 0.0.0.0 --queuePort 10001'
-
-
-  createbuckets:
-    image: mcr.microsoft.com/azure-cli:latest
-    network_mode: service:director
-    depends_on:
-      - storage
-    environment:
-      AZURE_STORAGE_CONNECTION_STRING: 'DefaultEndpointsProtocol=https;AccountName=stimagepostwestukdev001;AccountKey=lbe495kkrWdv1oiGANCKoPiw8KzemDwM0c8nmnRRjnvljZJXRP2HJbIdsg9wjfdySkcqa0oW199w+AStqfVeaQ==;BlobEndpoint=https://stimagepostwestukdev001.blob.core.windows.net/;TableEndpoint=https://stimagepostwestukdev001.table.core.windows.net/;QueueEndpoint=https://stimagepostwestukdev001.queue.core.windows.net/;FileEndpoint=https://stimagepostwestukdev001.file.core.windows.net/'
-    entrypoint: >
-      /bin/sh -c "
-      sleep 3;
-      echo Creating containers;
-      az storage container create -n sorry-cypress;
-      az storage container show -n sorry-cypress;
-      exit 0;
