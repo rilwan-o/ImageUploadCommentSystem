@@ -1,5 +1,8 @@
-Publish the Function:
+Shipping Details:
+1. Set up Azure Blob Storage in the Azure portal.
 
+2. Publish the Function:
+update the sktoragekey with the key from step 1.
 In Solution Explorer, right-click the project and select "Publish".
 Select "Azure" as the target and click "Next".
 Choose "Azure Function App (Windows)" or another appropriate option.
