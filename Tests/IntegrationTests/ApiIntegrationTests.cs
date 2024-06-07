@@ -80,7 +80,7 @@ namespace Tests.IntegrationTests
             var content = new StringContent(JsonConvert.SerializeObject(query));
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var response = await _client.GetAsync("/api/posts");
+            var response = await _client.PostAsync("/api/posts/get-posts", content);
 
             response.StatusCode.ShouldBe(System.Net.HttpStatusCode.OK);
             var posts = await response.Content.ReadAsStringAsync();

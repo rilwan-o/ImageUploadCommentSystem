@@ -28,7 +28,7 @@ namespace Api.Controllers
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
-           
+
         }
 
         [HttpPost("{postId}/comments")]
@@ -68,11 +68,11 @@ namespace Api.Controllers
 
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
-           
+
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetPosts([FromQuery] GetPostsQuery query)
+        [HttpPost("get-posts")]
+        public async Task<IActionResult> GetPosts([FromBody] GetPostsQuery query)
         {
             try
             {
