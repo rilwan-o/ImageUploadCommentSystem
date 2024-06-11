@@ -21,3 +21,4 @@ Go to the Azure Portal.
 Navigate to the Function App you deployed to.
 Verify that your function appears and is working correctly.
 
+NOTE: Azure service bus could be used to queue the uploaded images and then processed in azure functions, if there is a need for higher scalability. However, Azure Storage is auto-scalable, meaning it can automatically handle increases in workload without the need for manual intervention. Azure Storage can scale to meet the demands of your application as it grows, providing high availability and durability.
